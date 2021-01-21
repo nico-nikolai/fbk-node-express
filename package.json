@@ -1,7 +1,7 @@
 {
-  "name": "node-express",
+  "name": "fbk-node-express",
   "version": "1.0.0",
-  "description": "Node Express Examples",
+  "description": "Node Express for FBK",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
