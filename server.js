@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
-const storeRouter = require('./routes/storeRouter')
+const storeRouter = require('./routes/storeRouter');
+const blogRouter = require('./routes/blogRouter');
+const ourStoryRouter = require('./routes/ourStoryRouter');
 
 const hostname = 'localhost';
 const port = 3001;
@@ -10,25 +12,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 app.use('/store', storeRouter);
-
-app.get('/store/:itemId', (req, res) => {
-    res.end(`Will send details of the store item: ${req.params.itemId} to you`)
-})
-
-app.post('/store/:itemId', (req, res) => {
-    res.statusCode = 403;
-    res.end(`POST operation not supported on /store/${req.params.itemId}`)
-})
-
-app.put('/store/:itemId', (req, res) => {
-    res.write(`Updating the store itme: ${req.params.itemId}\n`);
-    res.end(`Will update the store item: ${req.body.name}
-        with description: ${req.body.description}`)
-})
-
-app.delete('/store/:itemId', (req, res) => {
-    res.end(`Deleting store item: ${req.params.itemId}`)
-})
+app.use('/blogs', blogRouter);
+app.use('/our-story', ourStoryRouter);
 
 app.use(express.static(__dirname + '/public'));
 
